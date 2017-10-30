@@ -18,9 +18,9 @@ int main (){
   read(fd, rand1, sizeof(rand1));
   // done with the file
   close(fd);
-  printf("reading 1 done\n");
+  printf("\nreading 1 done\n");
 
-  printf("array 1:\n");
+  printf("\narray 1:\n");
   int i = 0;
   // loop through array and print (runs from i = 0-9)
   while(10 - i){
@@ -35,7 +35,7 @@ int main (){
   write(fd, rand1, sizeof(rand1));
   // done with the file
   close(fd);
-  printf("writng done\n");
+  printf("\nwritng done\n");
 
   fd = open("out.txt", O_RDONLY);
   int rand2[10];
@@ -43,9 +43,9 @@ int main (){
   read(fd, rand2, sizeof(rand2));
   // done with the file
   close(fd);
-  printf("reading 2 done\n");
+  printf("\nreading 2 done\n");
 
-  printf("\n\n\narray 2:\n");
+  printf("\narray 2:\n");
   i = 0;
   // loop through array and print (runs from i = 0-9)
   while(10 - i){
