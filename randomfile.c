@@ -28,7 +28,7 @@ int main (){
   }
 
   // write to the file the array
-  fd = open("out.txt", O_CREAT | O_WRONLY, 0600);
+  fd = open("out.txt", O_CREAT | O_WRONLY, 0644);
   // ??write the bit chain rand into the file out.txt??
   write(fd, rand1, sizeof(rand1));
   // done with the file
