@@ -11,18 +11,30 @@ Systems - 4
 HW 7 - /Dev(ise a )/random( plan)
 */
 
-int main (){
+int random(){
+  int randint;
   int fd = open("/dev/random", O_RDONLY);
-  int rand1[10];
-  // read into the array the random characters
-  read(fd, rand1, sizeof(rand1));
-  // done with the file
+  read(fd, &randint, sizeof(randint));
+  if (errno) {
+       printf("error: %s\n", strerror(errno));
+   }
   close(fd);
+  return randint;
+}
+
+int main (){
+  int rand1[10];
+  int i = 0;
+  while (10 - i) {
+    rand1[i] = random();
+    i ++;
+  }
   printf("\nreading 1 done\n");
 
+
   printf("\narray 1:\n");
-  int i = 0;
   // loop through array and print (runs from i = 0-9)
+  i = 0;
   while(10 - i){
     printf("%d: %d\n", i, rand1[i]);
     i ++;
@@ -30,12 +42,13 @@ int main (){
 
 
   // write to the file the array
-  fd = open("out.txt", O_CREAT | O_WRONLY, 0644);
+  int fd = open("out.txt", O_CREAT | O_WRONLY | O_TRUNC, 0644);
   // ??write the bit chain rand into the file out.txt??
   write(fd, rand1, sizeof(rand1));
   // done with the file
   close(fd);
   printf("\nwritng done\n");
+
 
   fd = open("out.txt", O_RDONLY);
   int rand2[10];
@@ -44,6 +57,7 @@ int main (){
   // done with the file
   close(fd);
   printf("\nreading 2 done\n");
+
 
   printf("\narray 2:\n");
   i = 0;
