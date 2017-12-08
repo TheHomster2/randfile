@@ -11,7 +11,7 @@ Systems - 4
 HW 7 - /Dev(ise a )/random( plan)
 */
 
-int random(){
+int ran(){
   int randint;
   int fd = open("/dev/random", O_RDONLY);
   read(fd, &randint, sizeof(randint));
@@ -26,7 +26,7 @@ int main (){
   int rand1[10];
   int i = 0;
   while (10 - i) {
-    rand1[i] = random();
+    rand1[i] = ran();
     i ++;
   }
   printf("\nreading 1 done\n");
